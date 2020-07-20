@@ -76,7 +76,7 @@ jobs:
       run: |
         python scrape.py
       env:
-        FIRST_LINK_LABEL = ${{ secrets.FIRST_LINK_LABEL }}
+        FIRST_LINK_LABEL: ${{ secrets.FIRST_LINK_LABEL }}
 
     - name: Commit changes
       uses: EndBug/add-and-commit@v4
