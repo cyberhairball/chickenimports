@@ -75,7 +75,7 @@ jobs:
     - name: Run scraping
       run: |
         python scrape.py
-      with:
+      env:
         FIRST_LINK_LABEL = ${{ secrets.FIRST_LINK_LABEL }}
 
     - name: Commit changes
