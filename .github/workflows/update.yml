@@ -1,0 +1,110 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: Find items
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  scrape_ubuntu:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - run: |
+        sudo apt-get install libxml2-dev libxslt-dev python-dev
+        sudo apt-get install libxss1 libappindicator1 libindicator7
+        sudo apt-get install chromium-browser
+        wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+        echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
+        sudo apt-get update 
+        sudo apt-get install google-chrome-stable=84.0.4147.89-1
+        whereis google-chrome
+        sudo apt-get install xvfb
+        sudo apt-get install unzip
+        wget -N https://chromedriver.storage.googleapis.com/84.0.4147.30/chromedriver_linux64.zip
+        unzip chromedriver_linux64.zip
+        chmod +x chromedriver
+        sudo mv -f chromedriver /usr/local/share/chromedriver
+        sudo ln -sf /usr/local/share/chromedriver /usr/local/bin/chromedriver
+        sudo ln -sf /usr/local/share/chromedriver /usr/bin/chromedriver
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install flake8 pytest
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Lint with flake8
+      run: |
+        # stop the build if there are Python syntax errors or undefined names
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+    - name: Run scraping
+      run: |
+        python scrape.py
+    - name: Commit changes
+      uses: EndBug/add-and-commit@v4
+      with:
+        author_name: Compile bot
+        message: "Store found items automatically"
+        add: "*.csv"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  scrape_macos:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - run: |
+       brew tap homebrew/cask
+       brew cask install chromedriver
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install flake8 pytest
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Lint with flake8
+      run: |
+        # stop the build if there are Python syntax errors or undefined names
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+    - name: Run scraping
+      run: |
+        python scrape.py
+      env:
+        FIRST_LINK_LABEL = ${{ secrets.FIRST_LINK_LABEL }}
+        SECOND_LINK_LABEL = ${{ secrets.SECOND_LINK_LABEL }}
+        DESTINATION_LIK = ${{ DESTINATION_LINK }}
+        DESTINATION_LINK_LABEL = ${{ DESTINATION_LINK_LABEL }}
+        BRAND_MAPPING = ${{ BRAND_MAPPING }}
+        PHRASE = ${{ PHRASE }}
+        CATEGORIES = ${{ CATEGORIES }}
+
+
+MIN_DIFF = int(os.environ["MIN_DIFF"])
+NUM_CATEGORIES = int(os.environ["NUM_CATEGORIES"])
+    - name: Commit changes
+      uses: EndBug/add-and-commit@v4
+      with:
+        author_name: Compile bot
+        message: "Store found items automatically"
+        add: "*.csv"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
