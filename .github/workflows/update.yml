@@ -90,15 +90,14 @@ jobs:
       env:
         FIRST_LINK_LABEL = ${{ secrets.FIRST_LINK_LABEL }}
         SECOND_LINK_LABEL = ${{ secrets.SECOND_LINK_LABEL }}
-        DESTINATION_LIK = ${{ DESTINATION_LINK }}
-        DESTINATION_LINK_LABEL = ${{ DESTINATION_LINK_LABEL }}
-        BRAND_MAPPING = ${{ BRAND_MAPPING }}
-        PHRASE = ${{ PHRASE }}
-        CATEGORIES = ${{ CATEGORIES }}
+        DESTINATION_LIK = ${{ secrets.DESTINATION_LINK }}
+        DESTINATION_LINK_LABEL = ${{ secrets.DESTINATION_LINK_LABEL }}
+        BRAND_MAPPING = ${{ secrets.BRAND_MAPPING }}
+        PHRASE = ${{ secrets.PHRASE }}
+        CATEGORIES = ${{ secrets.CATEGORIES }}
+        MIN_DIFF = ${{ secrets.MIN_DIFF"])
+        NUM_CATEGORIES = ${{ secrets.NUM_CATEGORIES }}
 
-
-MIN_DIFF = int(os.environ["MIN_DIFF"])
-NUM_CATEGORIES = int(os.environ["NUM_CATEGORIES"])
     - name: Commit changes
       uses: EndBug/add-and-commit@v4
       with:
