@@ -74,7 +74,7 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Run scraping
       run: |
-        python scrape.py
+        python -d scrape.py
       env:
         FIRST_LINK_LABEL: ${{ secrets.FIRST_LINK_LABEL }}
 
