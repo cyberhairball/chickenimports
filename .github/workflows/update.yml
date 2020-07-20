@@ -95,7 +95,7 @@ jobs:
         BRAND_MAPPING = ${{ secrets.BRAND_MAPPING }}
         PHRASE = ${{ secrets.PHRASE }}
         CATEGORIES = ${{ secrets.CATEGORIES }}
-        MIN_DIFF = ${{ secrets.MIN_DIFF"])
+        MIN_DIFF = ${{ secrets.MIN_DIFF }}
         NUM_CATEGORIES = ${{ secrets.NUM_CATEGORIES }}
 
     - name: Commit changes
