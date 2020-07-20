@@ -79,7 +79,7 @@ jobs:
       env:
         FIRST_LINK_LABEL: ${{ secrets.FIRST_LINK_LABEL }}
         SECOND_LINK_LABEL: ${{ secrets.SECOND_LINK_LABEL }}
-        DESTINATION_LIK: ${{ secrets.DESTINATION_LINK }}
+        DESTINATION_LINK: ${{ secrets.DESTINATION_LINK }}
         DESTINATION_LINK_LABEL: ${{ secrets.DESTINATION_LINK_LABEL }}
         BRAND_MAPPING: ${{ secrets.BRAND_MAPPING }}
         PHRASE: ${{ secrets.PHRASE }}
