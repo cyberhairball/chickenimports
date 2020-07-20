@@ -80,9 +80,6 @@ jobs:
         SECOND_LINK_LABEL = ${{ secrets.SECOND_LINK_LABEL }}
         DESTINATION_LIK = ${{ secrets.DESTINATION_LINK }}
         DESTINATION_LINK_LABEL = ${{ secrets.DESTINATION_LINK_LABEL }}
-        BRAND_MAPPING = ${{ secrets.BRAND_MAPPING }}
-        PHRASE = ${{ secrets.PHRASE }}
-        CATEGORIES = ${{ secrets.CATEGORIES }}
         MIN_DIFF = ${{ secrets.MIN_DIFF }}
         NUM_CATEGORIES = ${{ secrets.NUM_CATEGORIES }}
 
