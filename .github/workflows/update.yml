@@ -75,7 +75,7 @@ jobs:
     - name: Run scraping
       run: |
         python scrape.py
-      env:
+      with:
         FIRST_LINK_LABEL = ${{ secrets.FIRST_LINK_LABEL }}
         SECOND_LINK_LABEL = ${{ secrets.SECOND_LINK_LABEL }}
         DESTINATION_LIK = ${{ secrets.DESTINATION_LINK }}
