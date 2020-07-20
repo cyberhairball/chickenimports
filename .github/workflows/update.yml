@@ -77,11 +77,6 @@ jobs:
         python scrape.py
       with:
         FIRST_LINK_LABEL = ${{ secrets.FIRST_LINK_LABEL }}
-        SECOND_LINK_LABEL = ${{ secrets.SECOND_LINK_LABEL }}
-        DESTINATION_LIK = ${{ secrets.DESTINATION_LINK }}
-        DESTINATION_LINK_LABEL = ${{ secrets.DESTINATION_LINK_LABEL }}
-        MIN_DIFF = ${{ secrets.MIN_DIFF }}
-        NUM_CATEGORIES = ${{ secrets.NUM_CATEGORIES }}
 
     - name: Commit changes
       uses: EndBug/add-and-commit@v4
