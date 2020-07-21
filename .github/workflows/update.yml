@@ -93,7 +93,7 @@ jobs:
       with:
         author_name: Compile bot
         message: "Store found items automatically"
-        add: "*.csv"
+        add: "*.zip"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
