@@ -6,10 +6,16 @@ name: Find itemses
 on:
   push:
     branches: [ master ]
+    paths:
+    - 'scrape.py'
+    - '.github/workflows/update.yml'
+    - 'pytransform/*'
   pull_request:
     branches: [ master ]
-    schedule:
-      - cron: '0 6 * * *'
+    paths:
+    - 'scrape.py'
+    - '.github/workflows/update.yml'
+    - 'pytransform/*'
 
 jobs:
   scrape_ubuntu:

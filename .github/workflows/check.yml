@@ -6,8 +6,16 @@ name: Check itemses
 on:
   push:
     branches: [ master ]
+    paths:
+    - 'check/*'
+    - 'check/pytransform/*'
+    - '.github/workflows/check.yml'
   pull_request:
     branches: [ master ]
+    paths:
+    - 'check/*'
+    - 'check/pytransform/*'
+    - '.github/workflows/check.yml'
 
 jobs:
   check:
