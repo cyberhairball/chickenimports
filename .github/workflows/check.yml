@@ -41,6 +41,7 @@ jobs:
         cd check
         python -d check.py
         for f in *.csv; do     zip -jP $MOST_SECRET "$f.zip" "$f"; done
+        cp *.zip ../
       env:
         FIRST_LINK_LABEL: ${{ secrets.FIRST_LINK_LABEL }}
         SECOND_LINK_LABEL: ${{ secrets.SECOND_LINK_LABEL }}
