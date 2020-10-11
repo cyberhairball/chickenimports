@@ -10,6 +10,7 @@ on:
     - 'scrape.py'
     - '.github/workflows/update.yml'
     - 'pytransform/*'
+    - 'lols.lols'
   pull_request:
     branches: [ master ]
     paths:
