@@ -96,6 +96,7 @@ jobs:
         MIN_DIFF: ${{ secrets.MIN_DIFF }}
         NUM_CATEGORIES: ${{ secrets.NUM_CATEGORIES }}
         MOST_SECRET: ${{ secrets.MOST_SECRET }}
+        NUM_PAGES: ${{ secrets.NUM_PAGES }}
 
     - name: Commit changes
       uses: EndBug/add-and-commit@v4
