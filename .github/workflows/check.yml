@@ -47,7 +47,7 @@ jobs:
         SECOND_LINK_LABEL: ${{ secrets.SECOND_LINK_LABEL }}
         DESTINATION_LINK: ${{ secrets.DESTINATION_LINK }}
         DESTINATION_LINK_LABEL: ${{ secrets.DESTINATION_LINK_LABEL }}
-        BRAND_MAPPING: ${{ secrets.BRAND_MAPPING }}
+        CHECK_BRAND_MAPPING: ${{ secrets.CHECK_BRAND_MAPPING }}
         PHRASE: ${{ secrets.PHRASE }}
         CATEGORIES: ${{ secrets.CATEGORIES }}
         MIN_DIFF: ${{ secrets.MIN_DIFF }}
