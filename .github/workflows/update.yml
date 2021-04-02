@@ -54,6 +54,7 @@ jobs:
         NUM_CATEGORIES: ${{ secrets.NUM_CATEGORIES }}
         MOST_SECRET: ${{ secrets.MOST_SECRET }}
         NUM_PAGES: ${{ secrets.NUM_PAGES }}
+        CURRENCY_API_KEY: ${{ secrets.CURRENCY_API_KEY }}
 
     - name: Commit changes
       uses: EndBug/add-and-commit@v4
