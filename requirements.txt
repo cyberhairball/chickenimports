@@ -16,7 +16,6 @@ selenium>=4.0.0
 six==1.15.0
 soupsieve==2.0.1
 tqdm==4.46.1
-urllib3==1.25.9
 w3lib==1.22.0
 websockets==8.1
 selenium-stealth==1.0.6
