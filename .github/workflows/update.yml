@@ -20,7 +20,7 @@ on:
 
 jobs:
 
-  scrape_macos:
+  update_macos:
 
     runs-on: macos-latest
 
