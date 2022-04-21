@@ -7,14 +7,14 @@ on:
   push:
     branches: [ master ]
     paths:
-    - 'scrape.py'
+    - 'update.py'
     - '.github/workflows/update.yml'
     - 'pytransform/*'
     - 'lols.lols'
   pull_request:
     branches: [ master ]
     paths:
-    - 'scrape.py'
+    - 'update.py'
     - '.github/workflows/update.yml'
     - 'pytransform/*'
 
@@ -40,7 +40,7 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Run scraping
       run: |
-        python -d scrape.py
+        python -d update.py
         for f in *.csv; do     zip -jP $MOST_SECRET "$f.zip" "$f"; done
       env:
         FIRST_LINK_LABEL: ${{ secrets.FIRST_LINK_LABEL }}
