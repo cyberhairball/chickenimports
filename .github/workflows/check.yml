@@ -20,13 +20,10 @@ on:
 jobs:
   check:
 
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
-    - run: |
-       brew tap homebrew/cask
-       brew install --cask chromedriver
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
       with:
