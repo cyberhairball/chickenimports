@@ -51,6 +51,11 @@ jobs:
         sudo rm -rf /usr/bin/chromedriver
         sudo ln -s /usr/local/share/chromedriver /usr/bin/chromedriver
         chromedriver --version
+    - name: Prepare Selenium
+      uses: nanasess/setup-chromedriver@v1.0.5
+    - name: Start XVFB
+      run: |
+         Xvfb :99 &
     - name: Run check
       run: |
         cd check
