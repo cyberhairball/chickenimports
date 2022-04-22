@@ -30,27 +30,9 @@ jobs:
         python-version: '3.10'
     - name: Install dependencies
       run: |
-        sudo apt update 
-        sudo apt install -y unzip xvfb libxi6 libgconf-2-4 
-        sudo apt install default-jdk 
-        sudo curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add 
-        sudo bash -c "echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' >> /etc/apt/sources.list.d/google-chrome.list" 
-        sudo apt -y update 
-        sudo apt -y install google-chrome-stable 
-        google-chrome --version 
-        whereis google-chrome
         python -m pip install --upgrade pip
         pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-        sudo apt install -y curl
-        curl https://chromedriver.storage.googleapis.com/100.0.4896.60/chromedriver_linux64.zip --output chromedriver.zip
-        unzip chromedriver.zip -d check
-        sudo chmod +x check/chromedriver
-        sudo cp check/chromedriver /usr/local/share/
-        sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
-        sudo rm -rf /usr/bin/chromedriver
-        sudo ln -s /usr/local/share/chromedriver /usr/bin/chromedriver
-        chromedriver --version
     - name: Run check
       run: |
         cd check
