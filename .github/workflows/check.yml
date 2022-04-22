@@ -38,7 +38,7 @@ jobs:
     - name: Run check
       run: |
         cd check
-        sudo -E python -d check.py
+        sudo env "PATH=$PATH CHECK_BRAND_MAPPING=$CHECK_BRAND_MAPPING CATEGORY_IDS=$CATEGORY_IDS CHROMEWEBDRIVER=$CHROMEWEBDRIVER" python -d check.py
         for f in *.csv; do     zip -jP $MOST_SECRET "$f.zip" "$f"; done
         cp *.zip ../
       env:
