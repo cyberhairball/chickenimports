@@ -46,6 +46,10 @@ jobs:
         curl https://chromedriver.storage.googleapis.com/100.0.4896.60/chromedriver_linux64.zip --output chromedriver.zip
         unzip chromedriver.zip -d check
         sudo chmod +x check/chromedriver
+        sudo cp check/chromedriver /usr/local/share/
+        sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
+        sudo ln -s /usr/local/share/chromedriver /usr/bin/chromedriver
+        chromedriver --version
     - name: Run check
       run: |
         cd check
