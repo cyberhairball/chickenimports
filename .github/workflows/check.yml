@@ -38,7 +38,7 @@ jobs:
     - name: Run check
       run: |
         cd check
-        python -d check.py
+        sudo python -d check.py
         for f in *.csv; do     zip -jP $MOST_SECRET "$f.zip" "$f"; done
         cp *.zip ../
       env:
