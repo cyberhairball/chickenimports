@@ -48,6 +48,7 @@ jobs:
         sudo chmod +x check/chromedriver
         sudo cp check/chromedriver /usr/local/share/
         sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
+        sudo rm -rf /usr/bin/chromedriver
         sudo ln -s /usr/local/share/chromedriver /usr/bin/chromedriver
         chromedriver --version
     - name: Run check
